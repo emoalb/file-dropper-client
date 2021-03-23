@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+import UploadPage from "./UploadPage";
+import AppBar from "./AppBar";
+//const urlIP = "87.120.103.179:8000"
+//const urlLocalhost = "localhost:8000"
+function App(props) {
+    return (
+        <div className={'app'}>
+            <AppBar/>
+            <UploadPage/>
+        </div>
+    )
 }
 
-export default App;
+export default App
