@@ -5,10 +5,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
-
 import ListFilesPage from "./ListFilesPage";
-//const urlIP = "87.120.103.179:8000"
-//const urlLocalhost = "localhost:8000"
 const App = (props) => {
 
     return (
