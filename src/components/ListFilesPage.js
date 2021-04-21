@@ -1,9 +1,10 @@
 import React from 'react';
 import {useFetch} from "../hooks/UseFetchHook";
+import {Config} from "../config/Config";
 
 const ListFilesPage = () => {
 
-    const [data, loading] = useFetch("http://localhost:8666/api/getFileList")
+    const [data, loading] = useFetch(Config.DEVURL+"api/getFileList")
 
 
     return (
@@ -18,9 +19,15 @@ const ListFilesPage = () => {
     )
 
 }
+
+ const downloadFile = (file)=> {
+console.log("Trying to download file with name "+ file)
+}
+
 const myFileComponent = (file, key) => {
     return (
-        <p key={key}>{file}</p>
+        <p key={key}>{file}<button onClick={downloadFile.bind(this,file)}>Download</button></p>
     )
 }
+
 export default ListFilesPage;

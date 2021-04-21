@@ -2,12 +2,13 @@ import Dropzone from "react-dropzone-uploader";
 import 'react-dropzone-uploader/dist/styles.css'
 import {useToasts} from 'react-toast-notifications';
 import React from "react";
+import {Config} from "../config/Config";
 
 const UploadPageChild = () => {
 
     const {addToast} = useToasts();
     const getUploadParams = () => {
-        return {url: 'http://localhost:8666/api/uploadFile'}
+        return {url: Config.DEVURL+"api/uploadFile"}
     }
 
     const handleChangeStatus = ({meta}, status) => {
