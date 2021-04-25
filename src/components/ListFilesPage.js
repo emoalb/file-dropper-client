@@ -8,11 +8,11 @@ const ListFilesPage = () => {
 
 
     return (
-        <section id={"all-files"}>
+        <section id={"all-files-page"}>
             {
-                loading ? ("Loading....") :
+                loading ? ("Loading....") :(data.length===0?noFilesComponent():
                     data.map((d, index) =>
-                        myFileComponent(d, index))
+                        myFileComponent(d, index)))
 
             }
         </section>
@@ -23,7 +23,11 @@ const ListFilesPage = () => {
  const downloadFile = (file)=> {
 console.log("Trying to download file with name "+ file)
 }
-
+const noFilesComponent= ()=>{
+    return(
+        <p>No files Yet!</p>
+    )
+}
 const myFileComponent = (file, key) => {
     return (
         <p key={key}>{file}<button onClick={downloadFile.bind(this,file)}>Download</button></p>

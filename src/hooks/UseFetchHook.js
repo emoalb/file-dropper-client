@@ -16,7 +16,7 @@ setLoading(true)
         } finally {
 setLoading(false)
         }
-    }, [])
+    },[url])
 
     useEffect(() => {
         const controller = new AbortController()

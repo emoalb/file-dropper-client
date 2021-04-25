@@ -4,9 +4,11 @@ import UploadPageChild from "./UploadPageChild";
 
 const UploadPage = () => {
     return (
-        <ToastProvider>
-            <UploadPageChild/>
-        </ToastProvider>
+        <section id={"upload-page"}>
+            <ToastProvider>
+                <UploadPageChild/>
+            </ToastProvider>
+        </section>
     )
 }
 export default UploadPage;
