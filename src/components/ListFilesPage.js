@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useFetch} from "../hooks/UseFetchHook";
 import {Config} from "../config/Config";
 
-const ListFilesPage = () => {
 
+
+const ListFilesPage = () => {
     const [data, loading] = useFetch(Config.DEVURL + "api/getFileList")
 
 
@@ -13,7 +14,6 @@ const ListFilesPage = () => {
                 loading ? ("Loading....") : (data.length === 0 ? noFilesComponent() :
                     data.map((d, index) =>
                         myFileComponent(d, index)))
-
             }
         </section>
     )
@@ -30,8 +30,6 @@ const downloadFile = (file) => {
             a.download = file;
             a.click();
         });
-
-        //window.location.href = response.url;)
     })
 }
 const noFilesComponent = () => {
@@ -46,5 +44,4 @@ const myFileComponent = (file, key) => {
         </p>
     )
 }
-
 export default ListFilesPage;
