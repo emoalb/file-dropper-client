@@ -1,30 +1,26 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useFetch} from "../hooks/UseFetchHook";
 import {Config} from "../config/Config";
-
-
+import PageComponent from "./PageComponent";
 
 const ListFilesPage = () => {
     const [data, loading] = useFetch(Config.DEVURL + "api/getFileList")
-
-
     return (
         <section id={"all-files-page"}>
             {
                 loading ? ("Loading....") : (data.length === 0 ? noFilesComponent() :
-                    data.map((d, index) =>
-                        myFileComponent(d, index)))
+                   <PageComponent items ={data}/>)
             }
         </section>
     )
-
 }
 
 const downloadFile = (file) => {
     console.log("Trying to download file with name " + file)
     fetch(Config.DEVURL + "api/downloadFile/" + file).then(response => {
         response.blob().then(blob => {
-            let url = window.URL.createObjectURL(blob);
+           // let urlReact = ReactDom.render(<a href={blob}/>,document.getElementById("app"))
+           let url = window.URL.createObjectURL(blob);
             let a = document.createElement('a');
             a.href = url;
             a.download = file;
@@ -44,4 +40,5 @@ const myFileComponent = (file, key) => {
         </p>
     )
 }
+
 export default ListFilesPage;
