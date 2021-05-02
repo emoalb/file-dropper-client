@@ -23,6 +23,7 @@ const PaginationComponent = (props) => {
             setCurrentPage(Number(event.target.id))
         }
 
+
         return (
             <li
                 key={number}
@@ -40,6 +41,8 @@ const PaginationComponent = (props) => {
           </ul>
           <ul id="page-numbers">
               {renderPageNumbers}
+              <p>Current page: {currentPage}</p>
+              <p>Go to page: <input/><button>Go!</button></p>
           </ul>
       </div>
   )
