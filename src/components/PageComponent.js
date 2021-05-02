@@ -11,8 +11,8 @@ const PaginationComponent = (props) => {
     const indexOfFirstTodo = indexOfLastTodo - itemsPerPage;
     const currentTodos = itemsList.slice(indexOfFirstTodo, indexOfLastTodo);
 
-    const renderTodos = currentTodos.map((todo, index) => {
-        return <li key={index}>{todo}</li>;
+    const renderTodos = currentTodos.map((item, index) => {
+        return <li key={index}>{item} <button onClick={props.onAction.bind(this, item)}>Download</button></li>;
     });
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(itemsList.length /itemsPerPage); i++) {

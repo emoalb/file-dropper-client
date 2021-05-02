@@ -9,7 +9,7 @@ const ListFilesPage = () => {
         <section id={"all-files-page"}>
             {
                 loading ? ("Loading....") : (data.length === 0 ? noFilesComponent() :
-                   <PageComponent items ={data}/>)
+                   <PageComponent items ={data} onAction = {downloadFile}/>)
             }
         </section>
     )
@@ -33,12 +33,12 @@ const noFilesComponent = () => {
         <p>No files Yet!</p>
     )
 }
-const myFileComponent = (file, key) => {
-    return (
-        <p key={key}>{file}
-            <button onClick={downloadFile.bind(this, file)}>Download</button>
-        </p>
-    )
-}
+// const myFileComponent = (file, key) => {
+//     return (
+//         <p key={key}>{file}
+//             <button onClick={downloadFile.bind(this, file)}>Download</button>
+//         </p>
+//     )
+// }
 
 export default ListFilesPage;
