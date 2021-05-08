@@ -4,7 +4,7 @@ import {Config} from "../config/Config";
 import PageComponent from "./PageComponent";
 
 const ListFilesPage = () => {
-    const [data, loading] = useFetch(Config.DEVURL + "api/getFileList")
+    const [data, loading] = useFetch(Config.DEV_URL + "api/getFileList")
     return (
         <section id={"all-files-page"}>
             {
@@ -17,7 +17,7 @@ const ListFilesPage = () => {
 
 const downloadFile = (file) => {
     console.log("Trying to download file with name " + file)
-    fetch(Config.DEVURL + "api/downloadFile/" + file)
+    fetch(Config.DEV_URL + "api/downloadFile/" + file)
         .then(response => {
         response.blob().then(blob => {
            // let urlReact = ReactDom.render(<a href={blob}/>,document.getElementById("app"))

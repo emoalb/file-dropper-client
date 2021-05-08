@@ -8,7 +8,7 @@ const UploadPageChild = () => {
 
     const {addToast} = useToasts();
     const getUploadParams = () => {
-        return {url: Config.DEVURL+"api/uploadFile"}
+        return {url: Config.DEV_URL+"api/uploadFile"}
     }
 
     const handleChangeStatus = ({meta}, status) => {

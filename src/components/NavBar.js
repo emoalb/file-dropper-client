@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {Config} from "../config/Config";
 
 
 
@@ -7,7 +8,7 @@ const NavBar = (props) => {
 
     return (
         <nav>
-            <h1>Spring Cloud Beta 0.0.3</h1>
+            <h1>Spring Cloud Beta {Config.VER_NUMBER}</h1>
             <ul className="nav nav-pills card-header-pills">
                 <LinkComponent caption="Upload Files" href="/"/>
                 <LinkComponent caption="List Files" href="/list-files"/>

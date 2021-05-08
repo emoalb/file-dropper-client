@@ -1,5 +1,6 @@
 import {useState} from "react"
 import * as React from "react";
+import ExpireMessage from "./ExpireMessage";
 
 const PaginationComponent = (props) => {
     const defaultItemsPerPage = 10
@@ -22,10 +23,9 @@ const PaginationComponent = (props) => {
     });
     const handleNavigationCLick = (event) => {
         event.preventDefault()
-        if (isNaN(pageInput.current.value)||pageInput.current.value> pageNumbers.length||pageInput.current.value< 1) {
+        if (isNaN(pageInput.current.value) || pageInput.current.value > pageNumbers.length || pageInput.current.value < 1) {
             setIsNumberValid(false)
-        }else
-        {
+        } else {
             let pageInputNum = Number(pageInput.current.value)
             setIsNumberValid(true)
             setCurrentPage(pageInputNum)
@@ -55,7 +55,7 @@ const PaginationComponent = (props) => {
     });
 
 
-    const  handleItemsPerPage = (event)=> {
+    const handleItemsPerPage = (event) => {
         setItemsPerPage(Number(event.target.value))
         setCurrentPage(1)
     }
@@ -71,17 +71,20 @@ const PaginationComponent = (props) => {
             <div id={"page-nav"}>
                 <form>
                     <label htmlFor={"page-input"}>Go to page: </label>
-                    <input id = "page-input" type={"text"} ref={pageInput}/>
+                    <input id="page-input" type={"text"} ref={pageInput}/>
                     <label htmlFor="items-per-page">Items per page:</label>
                     <select defaultValue={defaultItemsPerPage} id="items-per-page" onChange={handleItemsPerPage}>
                         <option value="3">3</option>
                         <option value="5">5</option>
-                        <option  value="10">10</option>
+                        <option value="10">10</option>
                         <option value="30">30</option>
                         <option value="100">100</option>
                     </select>
                     <button onClick={handleNavigationCLick}>Go!</button>
-                    {!isNumberValid?(<p className={"message-incorrect-number-option"}>Not a valid page option</p>):(<div></div>)}
+                    {!isNumberValid ? (<ExpireMessage delay={1000}>
+                            <p id={"message-incorrect-number-option"}>Not a valid page option</p>
+                        </ExpireMessage>) :
+                        (<div></div>)}
 
                 </form>
             </div>
