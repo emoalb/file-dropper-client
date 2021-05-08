@@ -81,10 +81,10 @@ const PaginationComponent = (props) => {
                         <option value="100">100</option>
                     </select>
                     <button onClick={handleNavigationCLick}>Go!</button>
-                    {!isNumberValid ? (<ExpireMessage delay={1000}>
+                    {!isNumberValid ? (<ExpireMessage setIsValid={setIsNumberValid} delay={1000}>
                             <p id={"message-incorrect-number-option"}>Not a valid page option</p>
                         </ExpireMessage>) :
-                        (<div></div>)}
+                        (<div/>)}
 
                 </form>
             </div>

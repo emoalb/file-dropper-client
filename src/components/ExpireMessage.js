@@ -6,6 +6,7 @@ const ExpireMessage = props => {
     useEffect(() => {
         setTimeout(() => {
             setVisible(false);
+            props.setIsValid(true)
         }, props.delay);
     }, [props.delay]);
 

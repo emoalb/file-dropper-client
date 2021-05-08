@@ -26,4 +26,5 @@ const LinkComponent = (props) => {
     )
 }
 
+
 export default NavBar;
