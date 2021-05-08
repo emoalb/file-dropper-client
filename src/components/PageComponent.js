@@ -2,13 +2,14 @@ import {useState} from "react"
 import * as React from "react";
 
 const PaginationComponent = (props) => {
+    const defaultItemsPerPage = 10
     let pageInput = React.createRef();
     // eslint-disable-next-line
     const [itemsList, setItemsList] = useState(props.items)
     const [currentPage, setCurrentPage] = useState(1)
     const [isNumberValid, setIsNumberValid] = useState(true)
     // eslint-disable-next-line
-    const [itemsPerPage, setItemsPerPage] = useState(10)
+    const [itemsPerPage, setItemsPerPage] = useState(defaultItemsPerPage)
     const indexOfLastTodo = currentPage * itemsPerPage;
     const indexOfFirstTodo = indexOfLastTodo - itemsPerPage;
     const currentTodos = itemsList.slice(indexOfFirstTodo, indexOfLastTodo);
@@ -72,7 +73,7 @@ const PaginationComponent = (props) => {
                     <label htmlFor={"page-input"}>Go to page: </label>
                     <input id = "page-input" type={"text"} ref={pageInput}/>
                     <label htmlFor="items-per-page">Items per page:</label>
-                    <select defaultValue={"10"} id="items-per-page" onChange={handleItemsPerPage}>
+                    <select defaultValue={defaultItemsPerPage} id="items-per-page" onChange={handleItemsPerPage}>
                         <option value="3">3</option>
                         <option value="5">5</option>
                         <option  value="10">10</option>
