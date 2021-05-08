@@ -1,0 +1,19 @@
+#page-numbers {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+#page-numbers li{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+
+}
+.current-page{
+    font-weight: bold;
+}
+#page-numbers li:hover{
+    cursor: pointer;
+    background-color: darkgray;
+
+}

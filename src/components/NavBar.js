@@ -2,7 +2,9 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 
+
 const NavBar = (props) => {
+
     return (
         <nav>
             <h1>Spring Cloud Beta 0.0.3</h1>
