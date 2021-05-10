@@ -8,7 +8,7 @@ const ListFilesPage = () => {
     return (
         <section id={"all-files-page"}>
             {
-                loading ? ("Loading....") : (data.length === 0 ? (noFilesComponent()) :
+                loading ? (<div className={"loader"}>Loading...</div>) : (data.length === 0 ? (noFilesComponent()) :
                    <PageComponent items ={data} onAction = {downloadFile}/>)
             }
         </section>
