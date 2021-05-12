@@ -16,10 +16,15 @@ const PaginationComponent = (props) => {
     const currentTodos = itemsList.slice(indexOfFirstTodo, indexOfLastTodo);
     const pageNumbers = [];
 
-    const renderTodos = currentTodos.map((item, index) => {
-        return <li key={index}>{item}
-            <button onClick={props.onAction.bind(this, item)}>Download</button>
-        </li>;
+    const renderItems = currentTodos.map((item, index) => {
+        return (
+        <tr key={index}>
+            <th>{item.fname}</th>
+            <th>{item.size/1024}</th>
+            <th>{item.date}</th>
+            <th><button onClick={props.onAction.bind(this, item.fname)}>Download</button></th>
+        </tr>
+    );
     });
     const handleNavigationCLick = (event) => {
         event.preventDefault()
@@ -62,9 +67,18 @@ const PaginationComponent = (props) => {
 
     return (
         <div>
-            <ul>
-                {renderTodos}
-            </ul>
+            <table>
+                <thead>
+                <tr>
+                    <th>File name</th>
+                    <th>Size KB</th>
+                    <th>Date created</th>
+                </tr>
+                </thead>
+                <tbody>
+                {renderItems}
+                </tbody>
+            </table>
             <ul id={"page-numbers"}>
                 {renderPageNumbers}
             </ul>

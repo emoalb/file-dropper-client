@@ -4,7 +4,7 @@ import {Config} from "../config/Config";
 import PageComponent from "./PageComponent";
 
 const ListFilesPage = () => {
-    const [data, loading] = useFetch(Config.DEV_URL + "api/getFileList")
+    const [data, loading] = useFetch(Config.DEV_URL + "api/getFileListGson")
     return (
         <section id={"all-files-page"}>
             {
