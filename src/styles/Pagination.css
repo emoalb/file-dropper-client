@@ -3,17 +3,30 @@
     flex-direction: row;
     list-style-type: none;
 }
-#page-numbers li{
+
+#page-numbers li {
     margin: 0.5rem;
     padding: 0.5rem;
     border-radius: 0.2rem;
 
 }
-.current-page{
+
+.current-page {
     font-weight: bold;
 }
-#page-numbers li:hover{
+
+#page-numbers li:hover {
     cursor: pointer;
     background-color: darkgray;
+}
 
+th {
+    padding: 0.5rem;
+}
+
+#all-files-page > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }

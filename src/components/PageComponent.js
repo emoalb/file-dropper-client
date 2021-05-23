@@ -1,4 +1,5 @@
 import {useState} from "react"
+import dateFormat from "dateformat";
 import * as React from "react";
 import ExpireMessage from "./ExpireMessage";
 
@@ -17,14 +18,19 @@ const PaginationComponent = (props) => {
     const pageNumbers = [];
 
     const renderItems = currentTodos.map((item, index) => {
+        let fileName  = item.fname
+        let fileDate =dateFormat(item.date,"yyyy-mm-dd HH:MM:ss");
+        let fileSize = (item.size.toFixed(2).trim().length<=8)
+            ?((item.size/1024).toFixed(2)+" KB"):((item.size/(1024*1024)).toFixed(2)+" MB")
+       console.log(fileName+"  "+ item.size.toFixed(2).trim() + "  "+ item.size.toFixed(2).trim().length)
         return (
         <tr key={index}>
-            <th>{item.fname}</th>
-            <th>{item.size/1024}</th>
-            <th>{item.date}</th>
+            <th>{fileName}</th>
+            <th>{fileSize}</th>
+            <th>{fileDate}</th>
             <th><button onClick={props.onAction.bind(this, item.fname)}>Download</button></th>
         </tr>
-    );
+    )
     });
     const handleNavigationCLick = (event) => {
         event.preventDefault()
@@ -71,7 +77,7 @@ const PaginationComponent = (props) => {
                 <thead>
                 <tr>
                     <th>File name</th>
-                    <th>Size KB</th>
+                    <th>Size</th>
                     <th>Date created</th>
                 </tr>
                 </thead>
