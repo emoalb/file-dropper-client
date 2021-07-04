@@ -1,7 +1,7 @@
 import {useState} from "react"
-import dateFormat from "dateformat";
 import * as React from "react";
 import ExpireMessage from "./ExpireMessage";
+import FileComponent from "./FileComponent";
 
 const PaginationComponent = (props) => {
     const defaultItemsPerPage = 10
@@ -10,7 +10,6 @@ const PaginationComponent = (props) => {
     const [itemsList, setItemsList] = useState(props.items)
     const [currentPage, setCurrentPage] = useState(1)
     const [isNumberValid, setIsNumberValid] = useState(true)
-    // eslint-disable-next-line
     const [itemsPerPage, setItemsPerPage] = useState(defaultItemsPerPage)
     const indexOfLastTodo = currentPage * itemsPerPage;
     const indexOfFirstTodo = indexOfLastTodo - itemsPerPage;
@@ -18,19 +17,11 @@ const PaginationComponent = (props) => {
     const pageNumbers = [];
 
     const renderItems = currentTodos.map((item, index) => {
-        let fileName  = item.fname
-        let fileDate =dateFormat(item.date,"yyyy-mm-dd HH:MM:ss");
-        let fileSize = (item.size.toFixed(2).trim().length<=8)
-            ?((item.size/1024).toFixed(2)+" KB"):((item.size/(1024*1024)).toFixed(2)+" MB")
-       console.log(fileName+"  "+ item.size.toFixed(2).trim() + "  "+ item.size.toFixed(2).trim().length)
+
         return (
-        <tr key={index}>
-            <th>{fileName}</th>
-            <th>{fileSize}</th>
-            <th>{fileDate}</th>
-            <th><button onClick={props.onAction.bind(this, item.fname)}>Download</button></th>
-        </tr>
-    )
+            <FileComponent item={item} index={index}/>
+
+        )
     });
     const handleNavigationCLick = (event) => {
         event.preventDefault()
@@ -89,19 +80,21 @@ const PaginationComponent = (props) => {
                 {renderPageNumbers}
             </ul>
             <div id={"page-nav"}>
-                <form>
-                    <label htmlFor={"page-input"}>Go to page: </label>
-                    <input id="page-input" type={"text"} ref={pageInput}/>
-                    <label htmlFor="items-per-page">Items per page:</label>
-                    <select defaultValue={defaultItemsPerPage} id="items-per-page" onChange={handleItemsPerPage}>
+                <form id="page-form">
+                    <label className="form-item" htmlFor={"page-input"}>Go to page: </label>
+                    <input  className="form-item" id="page-input" type={"text"} ref={pageInput}/>
+                    <label  className="form-item" htmlFor="items-per-page">Items per page:</label>
+                    <select  className="form-item" defaultValue={defaultItemsPerPage} id="items-per-page" onChange={handleItemsPerPage}>
                         <option value="3">3</option>
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="30">30</option>
                         <option value="100">100</option>
                     </select>
-                    <button onClick={handleNavigationCLick}>Go!</button>
-                    {!isNumberValid ? (<ExpireMessage callback={()=>{setIsNumberValid(true)}} delay={1000}>
+                    <button  className="form-item" onClick={handleNavigationCLick}>Go!</button>
+                    {!isNumberValid ? (<ExpireMessage  className="form-item" callback={() => {
+                            setIsNumberValid(true)
+                        }} delay={1000}>
                             <p id={"message-incorrect-number-option"}>Not a valid page option</p>
                         </ExpireMessage>) :
                         (<div/>)}

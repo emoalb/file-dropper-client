@@ -4,12 +4,12 @@ import {Config} from "../config/Config";
 
 
 
-const NavBar = (props) => {
+const NavBar = () => {
 
     return (
         <nav>
             <h1>Spring Cloud Beta {Config.VER_NUMBER}</h1>
-            <ul className="nav nav-pills card-header-pills">
+            <ul className="nav">
                 <LinkComponent caption="Upload Files" href="/"/>
                 <LinkComponent caption="List Files" href="/list-files"/>
             </ul>
@@ -20,8 +20,8 @@ const NavBar = (props) => {
 
 const LinkComponent = (props) => {
     return (
-        <li className="nav-item">
-            <Link className="nav-link" to={props.href}>{props.caption}</Link>
+        <li className="item-nav">
+            <Link className="link-nav" to={props.href}>{props.caption}</Link>
         </li>
     )
 }

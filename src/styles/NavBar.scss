@@ -1,0 +1,13 @@
+h1{
+  margin: 0.2rem;
+}
+.nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+
+}
+.item-nav{
+  list-style: none;
+}

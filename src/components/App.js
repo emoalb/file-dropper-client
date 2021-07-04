@@ -1,5 +1,5 @@
 import React from 'react';
-import "../App.css"
+import "../App.scss"
 import UploadPage from "./UploadPage";
 import {
     Switch,
@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import ListFilesPage from "./ListFilesPage";
 import NavBar from "./NavBar";
-const App = (props) => {
+const App = () => {
 
     return (
         <div className="App">

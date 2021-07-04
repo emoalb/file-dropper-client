@@ -2,7 +2,6 @@ import {useState, useEffect} from "react";
 import {useCallback} from "react";
 
 function useFetch(url) {
-
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const fetchFiles = useCallback(async (controller) => {
@@ -12,15 +11,17 @@ function useFetch(url) {
             setData(json);
             setLoading(false)
         } catch (e) {
-setLoading(true)
+            setLoading(true)
         } finally {
-setLoading(false)
+            setLoading(false)
         }
-    },[url])
+    }, [url])
 
     useEffect(() => {
         const controller = new AbortController()
-        fetchFiles(controller).then(()=>{setLoading(false)})
+        fetchFiles(controller).then(() => {
+            setLoading(false)
+        })
         return () => controller.abort()
 
     }, [fetchFiles]);
