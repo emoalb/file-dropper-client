@@ -23,13 +23,15 @@ const FileComponent = (props) => {
             method: 'GET',
             responseType: 'blob',
             onDownloadProgress: (evt) => {
-                setProgress((evt.loaded / evt.total) * 100)
+                setProgress(Math.ceil((evt.loaded / evt.total) * 100))
                 console.log((evt.loaded / evt.total) * 100)
             }
         }).then((response) => {
             setProgress(0)
             FileDownload(response.data, fileName);
-        });
+        },(error)=>{
+console.log(error)
+        })
     }
 
     return (
@@ -37,12 +39,9 @@ const FileComponent = (props) => {
             <th>{fileName}</th>
             <th>{fileSize}</th>
             <th>{fileDate}</th>
-            <th>
-                <button onClick={downloadFile}>Download</button>
-            </th>
-            {!(progress === 0) ? <th>{progress}</th> : <></>}
+            {!(progress === 0) ? (<th>{progress} % loading...</th>):(<th><button onClick={downloadFile}>Download</button></th>) }
         </tr>
     )
 
-}
+};
 export default FileComponent;
